@@ -4,12 +4,14 @@
 using namespace std;
 
 void inicializa(double *u_viejo, double *u_masviejo, int nx, double x, double l, double delta_x);
-void evolucion(double *u_nuevo, double *u_viejo,double *u_masviejo, double k);
+void evolucion(double *u_nuevo, double *u_viejo,double *u_masviejo, double k, double nx);
 void imprime (double *u_nuevo, double *u_viejo, double *u_masviejo,int nx, double delta_x, double x, int nume);
 
 
 
 int main (){
+	//Se muestran los valores de las constantes 
+	
 	double t = 40.0;
 	double rho = 10;
 	double l = 100.0;
@@ -62,7 +64,7 @@ int main (){
 	return 0;
 }
 void inicializa(double *u_viejo, double *u_masviejo, int nx, double x, double l, double delta_x){
-
+//Se inicializan los valores de u vijo y mas viejo
 	for (int i = 0; i < nx ; ++i){
 
 		if ( x <= 0.8*l){
@@ -83,6 +85,7 @@ void inicializa(double *u_viejo, double *u_masviejo, int nx, double x, double l,
 }
 
 void evolucion(double *u_nuevo, double *u_viejo,double *u_masviejo, double k, double nx){
+	//Se muestra la evolucion de u viejo
 	
 	for (int i = 0; i < nx-1; ++i){
 
@@ -97,17 +100,17 @@ void evolucion(double *u_nuevo, double *u_viejo,double *u_masviejo, double k, do
 
 void imprime (double *u_nuevo, double *u_viejo, double *u_masviejo,int nx, double delta_x, double x, int nume){
 	
+	// Se imprimen los valores
+	
 	for (int i = 0; i < nx; ++i){
 			x = delta_x;
-
-			if (i%(nume/20)==0){
-				for (int i = 0; i < 501; ++i){
+			for (int i = 0; i < 501; ++i){
 					cout << x <<" "<< u_nuevo[i]<< endl;
 					
-				}
-
 			}
+
 			
-		}
+			
+	}
 	
 }
