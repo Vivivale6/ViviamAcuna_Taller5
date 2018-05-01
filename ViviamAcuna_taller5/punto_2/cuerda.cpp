@@ -7,56 +7,7 @@ void inicializa(double *u_viejo, double *u_masviejo, int nx, double x, double l,
 void evolucion(double *u_nuevo, double *u_viejo,double *u_masviejo, double k);
 void imprime (double *u_nuevo, double *u_viejo, double *u_masviejo,int nx, double delta_x, double x, int nume);
 
-void inicializa(double *u_viejo, double *u_masviejo, int nx, double x, double l, double delta_x){
 
-	for (int i = 0; i < nx ; ++i){
-
-		if ( x <= 0.8*l){
-			u_masviejo[i]= 1.25*x/l;
-			u_viejo[i]= 1.25*x/l;
-
-		}
-		else {
-			u_masviejo[i]= 5.0-5.0*x/l;
-			u_viejo[i]= 5.0-5.0*x/l;
-		}
-
-		cout << x << " " << u_viejo[i]<<endl;
-		x += delta_x;
-		
-	}
-
-}
-
-void evolucion(double *u_nuevo, double *u_viejo,double *u_masviejo, double k, double nx){
-	
-	for (int i = 0; i < nx-1; ++i){
-
-		u_nuevo[i]= k*(u_viejo[i+1]+u_viejo[i-1]-2.0*u_viejo[i]) + 2.0* u_viejo[i];
-
-
-	}
-
-		
-	
-}
-
-void imprime (double *u_nuevo, double *u_viejo, double *u_masviejo,int nx, double delta_x, double x, int nume){
-	
-	for (int i = 0; i < nx; ++i){
-			x = delta_x;
-
-			if (i%(nume/20)==0){
-				for (int i = 0; i < 501; ++i){
-					cout << x <<" "<< u_nuevo[i]<< endl;
-					
-				}
-
-			}
-			
-		}
-	
-}
 
 int main (){
 	double t = 40.0;
@@ -110,4 +61,53 @@ int main (){
 
 	return 0;
 }
+void inicializa(double *u_viejo, double *u_masviejo, int nx, double x, double l, double delta_x){
 
+	for (int i = 0; i < nx ; ++i){
+
+		if ( x <= 0.8*l){
+			u_masviejo[i]= 1.25*x/l;
+			u_viejo[i]= 1.25*x/l;
+
+		}
+		else {
+			u_masviejo[i]= 5.0-5.0*x/l;
+			u_viejo[i]= 5.0-5.0*x/l;
+		}
+
+		cout << x << " " << u_viejo[i]<<endl;
+		x += delta_x;
+		
+	}
+
+}
+
+void evolucion(double *u_nuevo, double *u_viejo,double *u_masviejo, double k, double nx){
+	
+	for (int i = 0; i < nx-1; ++i){
+
+		u_nuevo[i]= k*(u_viejo[i+1]+u_viejo[i-1]-2.0*u_viejo[i]) + 2.0* u_viejo[i];
+
+
+	}
+
+		
+	
+}
+
+void imprime (double *u_nuevo, double *u_viejo, double *u_masviejo,int nx, double delta_x, double x, int nume){
+	
+	for (int i = 0; i < nx; ++i){
+			x = delta_x;
+
+			if (i%(nume/20)==0){
+				for (int i = 0; i < 501; ++i){
+					cout << x <<" "<< u_nuevo[i]<< endl;
+					
+				}
+
+			}
+			
+		}
+	
+}
